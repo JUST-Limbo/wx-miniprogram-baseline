@@ -1,6 +1,6 @@
-const SET_TOKEN_SYNC = (data) => {
+const SET_TOKEN_SYNC = (value) => {
   try {
-    wx.setStorageSync('key', data)
+    wx.setStorageSync('token', value)
   } catch (error) {
     console.log(error)
   }

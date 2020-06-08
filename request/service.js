@@ -9,7 +9,7 @@ function fetch(options) {
         'Content-Type': 'application/json',
         'token':GET_TOKEN_SYNC()
       },
-      method: options.method || 'GET',
+      method: options.method || 'POST',
       timeout:options.timeout || 10000,
       dataType: 'json',
       responseType: options.responseType || 'text',
