@@ -4,6 +4,10 @@ const API = require('../api')
 
 function $req(payload) {
   return new Promise((resolve, reject) => {
+    // 参数校验
+    if (!PARAMS_VALIDATOR(payload, reject)){
+      return
+    }
     // 请求报文
     START_REQUEST(payload)
     wx.request({
@@ -42,6 +46,16 @@ function START_REQUEST(payload) {
 
 function GET_RESPONSE(payload) {
   console.log(`${payload.url}-${payload.explain}-结束=` + JSON.stringify(res.data))
+}
+
+function PARAMS_VALIDATOR(payload, reject) {
+  payload.requiredProps.forEach((item,index,array) => {
+    if(!payload.data[item]){
+      reject(`参数错误 ${item}`)
+      return false
+    }
+  })
+  return true
 }
 
 module.exports = $req
