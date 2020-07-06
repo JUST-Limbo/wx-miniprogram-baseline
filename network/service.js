@@ -1,18 +1,26 @@
-const { GET_TOKEN_SYNC } = require('../utils/storage/token')
-const { HOST_URL } = require('../config')
+const {
+  GET_TOKEN_SYNC
+} = require('../utils/storage/token')
+const {
+  HOST_URL
+} = require('../config/env')
 const API = require('../api')
+
+// 头信息
+const header = {
+  'Content-Type': 'application/json',
+  'token': GET_TOKEN_SYNC()
+}
 
 function $req(payload) {
   return new Promise((resolve, reject) => {
     // 请求报文
     START_REQUEST(payload)
     wx.request({
-      url: HOST_URL + API[payload.url],
+      // 请求地址
+      url: App.HOST_URL + API[payload.url],
       data: payload.data,
-      header: payload.header || {
-        'Content-Type': 'application/json',
-        'token': GET_TOKEN_SYNC()
-      },
+      header: header,
       method: payload.method || 'POST',
       timeout: payload.timeout || 10000,
       dataType: payload.dataType || 'json',

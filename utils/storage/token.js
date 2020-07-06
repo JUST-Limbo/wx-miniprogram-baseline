@@ -12,14 +12,15 @@ const GET_TOKEN_SYNC = () => {
     if (value) {
       return value
     } else {
-      return null
+      return ""
     }
   } catch (error) {
     console.log(error)
-    return null
+    return ""
   }
 }
 
 module.exports = {
-  SET_TOKEN_SYNC, GET_TOKEN_SYNC
+  SET_TOKEN_SYNC,
+  GET_TOKEN_SYNC
 }

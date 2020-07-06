@@ -6,6 +6,6 @@
 //   })
 // }
 
-const $getSetting = async () =>{
+const $getSetting = async () => {
 
 }
