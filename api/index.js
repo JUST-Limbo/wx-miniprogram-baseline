@@ -1,5 +1,3 @@
-const API = {
+module.exports = {
 
 }
-
-module.exports = API

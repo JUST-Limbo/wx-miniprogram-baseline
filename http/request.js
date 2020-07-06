@@ -1,15 +1,10 @@
-const {
-  GET_TOKEN_SYNC
-} = require('../utils/storage/token')
-const {
-  HOST_URL
-} = require('../config/env')
+const store = require('../utils/store')
 const API = require('../api')
 
 // 头信息
 const header = {
   'Content-Type': 'application/json',
-  'token': GET_TOKEN_SYNC()
+  'token': store.getItem('token')
 }
 
 function $req(payload) {
@@ -36,9 +31,9 @@ function $req(payload) {
           reject(res.data)
         }
       },
-      fail: (res) => {
+      fail: (err) => {
         reject('请求失败')
-        console.warn(JSON.stringify(res))
+        console.warn(JSON.stringify(err))
       }
     })
   })
